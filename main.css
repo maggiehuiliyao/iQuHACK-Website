@@ -34,5 +34,12 @@ body {
 .button:hover {
   background-color: white;
   color:black;
-  transition: 0.7s;
 }
+
+button:hover span {
+  display: none
+}
+
+.button:hover::after {
+  content: "|1⟩"
+ }

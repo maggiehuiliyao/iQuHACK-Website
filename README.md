@@ -26,12 +26,12 @@ img3
 ## Packages and Tools
 
 We used the following packages and tools to implement our website/app:
-*Html + css (front end for user input and displaying results
+* Html + css (front end for user input and displaying results
 
-*Skyscanner API for python (for webscraping)
+* Skyscanner API for python (for webscraping)
 
-*Covalent and IBM Qiskit for quantum computing backend.
-*Flask to turn backend python code into a server to interact with front-end.
+* Covalent and IBM Qiskit for quantum computing backend.
+* Flask to turn backend python code into a server to interact with front-end.
 
 ## Results - Frontend
 We implemented the front-end using drop-down menus for the start location and destination.
@@ -55,26 +55,26 @@ img 7
 ## Runtime Information
 
 We used the two following backends:
-*“Ibmq_qasm_simulator”
-*Total jobs run: 55
-*Shots per job: 100
+* “Ibmq_qasm_simulator”
+* Total jobs run: 55
+* Shots per job: 100
 
 and
 
-*“Ibm_nairobi”
-*Total jobs run: 5
-*Shots per job: 100
+* “Ibm_nairobi”
+* Total jobs run: 5
+* Shots per job: 100
 
 
 ## Future Considerations
 
-*Expanding the destinations to all over the world utilizing better APIs or web-scraping the data ourselves
+* Expanding the destinations to all over the world utilizing better APIs or web-scraping the data ourselves
 
-*Adding additional criteria (ex: free-breakfast, wifi, prices, etc.) and additional features (ex: tourist destinations) and optimizing our searching algorithm through enhancing Grover’s in some way so that even with more options, it’s still fast.
+* Adding additional criteria (ex: free-breakfast, wifi, prices, etc.) and additional features (ex: tourist destinations) and optimizing our searching algorithm through enhancing Grover’s in some way so that even with more options, it’s still fast.
 
-*Optimize based on distance as well so for example, hotels and restaurants are close to one another
+* Optimize based on distance as well so for example, hotels and restaurants are close to one another
 
-*Add a map so that users may have better visualizations
+* Add a map so that users may have better visualizations
 
 
 Thanks for listening!

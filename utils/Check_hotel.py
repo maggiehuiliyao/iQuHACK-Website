@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import http.client
 
-def check_hotel(Departure_date,Return_date,region_id):
+def check_hotel(region_id,Departure_date,Return_date):
     conn = http.client.HTTPSConnection("hotels-com-provider.p.rapidapi.com")
 
     headers = {

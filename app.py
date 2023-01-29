@@ -6,7 +6,14 @@ import random
 # sys.path.append(rootpath)
 
 from utils.Check_flights import check_flights
+<<<<<<< HEAD
 #from covalent_grover_sampler import grover_function #CHANGE BACK LATER
+=======
+from utils.Check_region_id import check_region_id
+from utils.Check_hotel import check_hotel
+from utils.Check_restaurant import check_restaurant
+from covalent_grover_sampler import grover_function
+>>>>>>> 90d2e72 (modified many files)
 from flask import Flask, render_template, request
 
 app = Flask(__name__) # Creating our Flask Instance
@@ -32,11 +39,30 @@ def result():
     Food_type = request.form['Food_type']
     Price_range = request.form['Price_range']
 
+<<<<<<< HEAD
     df = check_flights(Origin,Destination,Departure_date,Return_date)
     #print(df.head())
     df_lowest_price = list(df.flight_price_total)[0]
     #df_html = df.to_html()
     #df_lowest_price = df.to_html()
+=======
+    df_flights = check_flights(Origin,Destination,Departure_date,Return_date)
+    lowest_flight_price = list(df_flights.flight_price_total)[0]
+    cheapest_flight_id_departing = list(df_flights.id_departing)[0]
+    cheapest_flight_id_returning = list(df_flights.id_returning)[0]
+
+    
+    region_id = check_region_id(Destination)
+    df_hotel = check_hotel(region_id,Departure_date,Return_date)
+    flight_time_code_dict = {list(df_flights.time_code)[i]: list(df_flights.flight_price_total)[i] for i in range(len(df_flights))}
+    flight_airline_code_dict = {list(df_flights.airline_code)[i]: list(df_flights.flight_price_total)[i] for i in range(len(df_flights))}
+    lowest_hotel_price = list(df_hotel.price)[0]
+    cheapest_hotel_name = list(df_hotel.name)[0]
+
+    df_restaurant = check_restaurant(Destination)
+    lowest_restaurant_price = list(df_restaurant.price_range)[0]
+    cheapest_restaurant_name = list(df_restaurant.name)[0]
+>>>>>>> 90d2e72 (modified many files)
 
     return render_template(
             'taskbar.html',
@@ -48,9 +74,20 @@ def result():
             Airlines=Airlines,
             Food_type=Food_type,
             Price_range=Price_range,
+<<<<<<< HEAD
             df_lowest_price=df_lowest_price,
             grover_result="hi"
             #grover_result=grover_function("1100")
+=======
+            lowest_flight_price=lowest_flight_price,
+            cheapest_flight_id_departing=cheapest_flight_id_departing,
+            cheapest_flight_id_returning=cheapest_flight_id_returning,
+            lowest_hotel_price=lowest_hotel_price,
+            cheapest_hotel_name=cheapest_hotel_name,
+            lowest_restaurant_price=lowest_restaurant_price,
+            cheapest_restaurant_name=cheapest_restaurant_name,
+            grover_result=grover_function("1100")
+>>>>>>> 90d2e72 (modified many files)
         )
     
 

@@ -30,7 +30,7 @@ def grover_function(s:str):
 	import math
 
 	def grover(problem):
-	    n = int(math.sqrt((5)))
+	    n = int(math.sqrt((len(s))))
 	    grover = Grover(n)
 	    circuit = grover.construct_circuit(problem)
 	    circuit.measure_all() #NOTE THIS, REMOVED MEASUREALL BC OF OBSERVABLES, WILL SEE IF IT WORKS

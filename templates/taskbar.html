@@ -2,13 +2,73 @@
 <html>
     <head>
         <title>iQuHACK Website</title>
-        <link rel="stylesheet" href="static/main.css">
+        <link rel="stylesheet" href="static/taskbar.css">
     <head>
     <body>
         <div>
-            <h1 class="header">quantum travel</h1>
-            <p class="tagline">we'll do the planning for you</p>
-            <button class="button" onclick="google.com"><span><a href="{{ url_for('taskbar') }}">|0⟩</a></span></button>
+            <h1 class="header">Welcome to your newest travel planner</h1>
+            <h2 class="header">Please input your travel information:</h2>
+            <form method="post" action="{{ url_for('result') }}">
+
+                <label for="Origin">Origin (IATA code):</label>
+                <input type="text" name="Origin" id="Origin" value="ORD">
+                <br/>
+
+                <label for="Destination">Destination (IATA code):</label>
+                <input type="text" name="Destination" id="Destination" value="BOS">
+                <br/>
+
+                <label for="Departure_date">Departure_date (YYYY-MM-DD):</label>
+                <input type="text" name="Departure_date" id="Departure_date" value="2023-01-29">
+                <br/>
+
+                <label for="Return_date">Return_date (YYYY-MM-DD):</label>
+                <input type="text" name="Return_date" id="Return_date">
+                <br/>
+                
+                <h2 class="header">Please choose your travel preference:</h2>
+
+                <label for="Travel_time">Travel time</label>
+                <select id="Travel_time" name="Travel_time">
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Evening">Evening</option>
+                </select>
+
+                <label for="Airlines">Airlines</label>
+                <select id="Airlines" name="Airlines">
+                    <option value="American">American</option>
+                    <option value="Delta">Delta</option>
+                    <option value="United">United</option>
+                </select>
+
+                <label for="Food_type">Food_type</label>
+                <select id="Food_type" name="Food_type">
+                    <option value="American">American</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indian">Indian</option>
+                </select>
+
+                <label for="Price_range">Price_range</label>
+                <select id="Price_range" name="Price_range">
+                    <option value="$">$</option>
+                    <option value="$$">$$</option>
+                    <option value="$$$">$$$</option>
+                </select>
+
+                <br/>
+                <input type="submit" value="Submit"/>
+            </form>
+
+            <p>The trip is from {{Origin}} to {{Destination}}</p>
+            <p>Departure date: {{Departure_date}}. Return date: {{Return_date}}</p>
+            <p>Transportation preference:</p>
+            <p>Airlines: {{Airlines}}</p>
+            <p>Travel time: {{Travel_time}}</p>
+            <p>Food preference:</p>
+            <p>Type: {{Food_type}}</p>
+            <p>Price range: {{Price_range}}</p>
+            <p>df_lowest_price: {{df_lowest_price}}</p>
         </div>
     </body>
 </html>

@@ -6,13 +6,13 @@ img1
 
 ## Over-arching Idea
 
-*The main idea behind our design is to map values of properties of flights, hotels, and restaurants separately to different bit-strings
+* The main idea behind our design is to map values of properties of flights, hotels, and restaurants separately to different bit-strings
 
-*Create three bit-strings from the users selected options: one for the flight choices, one for the hotel choices, and one for the restaurant choices
+* Create three bit-strings from the users selected options: one for the flight choices, one for the hotel choices, and one for the restaurant choices
 
-*Use Grover’s search algorithm to filter features to return an option for the traveler from the criteria by matching such bit strings
+* Use Grover’s search algorithm to filter features to return an option for the traveler from the criteria by matching such bit strings
 
-*The advantage is only computing the data once and then having a square root speed-up when searching
+* The advantage is only computing the data once and then having a square root speed-up when searching
 
 ## Example using Hotel Values mapped to bit-strings
 

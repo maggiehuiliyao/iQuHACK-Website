@@ -32,6 +32,9 @@ def check_flights(origin,destination,departure_date,return_date):
 
     departure_time_departing = []
     departure_time_returning = []
+    
+    arrival_time_departing = []
+    arrival_time_returning = []
 
     duration_departing = []
     duration_returning = []
@@ -43,6 +46,8 @@ def check_flights(origin,destination,departure_date,return_date):
         flight_price_total.append(f['price']['amount'])
         departure_time_departing.append(f['legs'][0]['departure'])
         departure_time_returning.append(f['legs'][1]['departure'])
+        arrival_time_departing.append(f['legs'][0]['arrival'])
+        arrival_time_returning.append(f['legs'][1]['arrival'])
         duration_departing.append(f['legs'][0]['duration'])
         duration_returning.append(f['legs'][1]['duration'])
         carrier_departing.append(f['legs'][0]['carriers'][0]['name'])

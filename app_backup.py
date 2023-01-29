@@ -6,7 +6,6 @@ import random
 # sys.path.append(rootpath)
 
 from utils.Check_flights import check_flights
-from covalent_grover_sampler import grover_function
 from flask import Flask, render_template, request
 
 app = Flask(__name__) # Creating our Flask Instance
@@ -45,8 +44,7 @@ def result():
             Airlines=Airlines,
             Food_type=Food_type,
             Price_range=Price_range,
-            df_lowest_price=df_lowest_price,
-            grover_result=grover_function("1100")
+            df_lowest_price=df_lowest_price
         )
     
 

@@ -1,7 +1,13 @@
 import json
+import airportsdata
 import http.client
 
-def check_region_code(Destination):
+airports = airportsdata.load('IATA')
+
+def check_region_id(Destination):
+    
+    city_name = airports[Destination]['city']
+
     conn = http.client.HTTPSConnection("hotels-com-provider.p.rapidapi.com")
 
     headers = {
@@ -9,13 +15,13 @@ def check_region_code(Destination):
         'X-RapidAPI-Host': "hotels-com-provider.p.rapidapi.com"
         }
 
-    conn.request("GET", f"/v2/regions?locale=en_US&query={Destination}&domain=US", headers=headers)
+    conn.request("GET", f"/v2/regions?locale=en_US&query={city_name}&domain=US", headers=headers)
 
     res = conn.getresponse()
     data = res.read()
 
-    region_code = json.loads(data.decode("utf-8"))['data'][0].gaiaId
+    region_id = json.loads(data.decode("utf-8"))['data'][0]['gaiaId']
 
-    return region_code
+    return region_id
 
 

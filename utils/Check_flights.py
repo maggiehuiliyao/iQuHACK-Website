@@ -30,6 +30,9 @@ def check_flights(origin,destination,departure_date,return_date):
 
     flight_price_total = []
 
+    id_departing = []
+    id_returning = []
+
     departure_time_departing = []
     departure_time_returning = []
     
@@ -44,6 +47,8 @@ def check_flights(origin,destination,departure_date,return_date):
 
     for f in flights:
         flight_price_total.append(f['price']['amount'])
+        id_departing.append(f['legs'][0]['id'])
+        id_returning.append(f['legs'][1]['id'])
         departure_time_departing.append(f['legs'][0]['departure'])
         departure_time_returning.append(f['legs'][1]['departure'])
         arrival_time_departing.append(f['legs'][0]['arrival'])
@@ -53,11 +58,13 @@ def check_flights(origin,destination,departure_date,return_date):
         carrier_departing.append(f['legs'][0]['carriers'][0]['name'])
         carrier_returning.append(f['legs'][1]['carriers'][0]['name'])
 
-    df = pd.DataFrame({'flight_price_total':flight_price_total,'departure_time_departing':departure_time_departing,'departure_time_returning':departure_time_returning,'duration_departing':duration_departing,'duration_returning':duration_returning})
+    df = pd.DataFrame({'flight_price_total':flight_price_total,'departure_time_departing':departure_time_departing,'departure_time_returning':departure_time_returning,'duration_departing':duration_departing,'duration_returning':duration_returning,'id_departing':id_departing,'id_returning':id_returning})
 
     # convert time to morning / afternoon / night
-    df['departing_timeperiod'] = ['morning' if 5<int(t.split('T')[1].split(':')[0])<12 else 'afternoon' if 12<int(t.split('T')[1].split(':')[0])<18 else 'night' for t in departure_time_departing]
-    df['returning_timeperiod'] = ['morning' if 5<int(t.split('T')[1].split(':')[0])<12 else 'afternoon' if 12<int(t.split('T')[1].split(':')[0])<18 else 'night' for t in departure_time_returning]
+    df['departing_timeperiod'] = ['Morning' if 5<int(t.split('T')[1].split(':')[0])<12 else 'Afternoon' if 12<int(t.split('T')[1].split(':')[0])<18 else 'Evening' for t in departure_time_departing]
+    df['returning_timeperiod'] = ['Morning' if 5<int(t.split('T')[1].split(':')[0])<12 else 'Afternoon' if 12<int(t.split('T')[1].split(':')[0])<18 else 'Evening' for t in departure_time_returning]
+    df['time_code'] = ['00' if i == 'Morning' else '01' if i == 'Afternoon' else '10' for i in df['departing_timeperiod']]
+    df['airline_code'] = ['00' if i == 'American' else '01' if i == 'Delta' else '10' if i == 'United' else '11' for i in df['departing_timeperiod']]
 
     return df
 

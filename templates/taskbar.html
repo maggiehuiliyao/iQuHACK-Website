@@ -27,11 +27,11 @@
                 <br/>
                 
                 <h2 class="header">Please choose your travel preference:</h2>
-                <script>
+                <!-- <script>
                     var flight_bitstring = "";
                     var hotel_bitstring = "";
                     var food_bitstring = "";
-                </script>
+                </script> -->
 
                 <label for="hotel_rating">Hotel Rating</label>
                 <select id="hotel_rating" name="hotel_rating">
@@ -49,32 +49,20 @@
 
                 <label for="Airlines">Airlines</label>
                 <select id="Airlines" name="Airlines">
-<<<<<<< HEAD
                     <option value="00">American</option>
                     <option value="01">Delta</option>
                     <option value="10">United</option>
                     <option value="11"> Southwest</option>
-=======
-                    <option value="American">American</option>
-                    <option value="Delta">Delta</option>
-                    <option value="United">United</option>
-                    <option value="Southwest">United</option>
->>>>>>> 90d2e72 (modified many files)
+
                 </select>
 
                 <label for="Food_type">Food_type</label>
                 <select id="Food_type" name="Food_type">
-<<<<<<< HEAD
                     <option value="00">American</option>
                     <option value="01">Chinese</option>
                     <option value="10">Indian</option>
                     <option value="11">Mexican</option>
-=======
-                    <option value="Mexican">United</option>
-                    <option value="American">American</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Indian">Indian</option>
->>>>>>> 90d2e72 (modified many files)
+
                 </select>
 
                 <label for="Price_range">Price_range</label>
@@ -86,44 +74,43 @@
 
                 <label for="Hotel_star">Hotel_star</label>
                 <select id="Hotel_star" name="Hotel_star">
-                    <option value="**">*</option>
-                    <option value="***">***</option>
-                    <option value="****">****</option>
-                    <option value="*****">*****</option>
+                    <option value="00">*</option>
+                    <option value="01">***</option>
+                    <option value="10">****</option>
+                    <option value="11">*****</option>
                 </select>
 
                 <br/>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" onclick="sendFlightInfo();sendHotelInfo();sendFoodInfo();"/>
             </form>
-<<<<<<< HEAD
-            <div class="flex-container">
-
-                <div class="flex-child">
-                    <p>The trip is from {{Origin}} to {{Destination}}</p>
-                    <p>Departure date: {{Departure_date}}. Return date: {{Return_date}}</p>
-                    <p>Transportation preference:</p>
-                    <p>Airlines: {{Airlines}}</p>
-                    <p>Travel time: {{Travel_time}}</p>
-                    <p>Food preference:</p>
-                    <p>Type: {{Food_type}}</p>
-                    <p>Price range: {{Price_range}}</p>
-                    <p>lowest_ticket_price: {{df_lowest_price}}</p>
-                    <p>grover_result: {{grover_result}}</p>
-                </div>
-                
-                <div class="flex-child">
-                  <!-- listing something -->
-                  <script>
+            <script>
+                function sendFlightInfo(){
                     var timeselect = document.getElementById("Travel_time")
                     var airlineselect = document.getElementById("Airlines")
-                    flight_bitstring+=(timeselect.value + airlineselect.value)
-                    console.log(flight_bitstring)
-                  </script>
-                  
-                </div>
-                
-              </div>
-=======
+                    let flightinfo = (timeselect.value + airlineselect.value)
+                    console.log(flightinfo)
+                    const request = new XMLHttpRequest()
+                    request.open('POST', `result/${JSON.stringify(flightinfo)}`)
+                    request.send();
+                }
+                function sendHotelInfo() {
+                    var hotelselect = document.getElementById("Hotel_star")
+                    let hotelinfo = (hotelselect.value)
+                    console.log(hotelinfo)
+                    const request = new XMLHttpRequest()
+                    request.open('POST', `result/${JSON.stringify(hotelinfo)}`)
+                    request.send();
+                }
+                function sendFoodInfo() {
+                    var foodselect = document.getElementById("Food_type")
+                    let foodinfo = (foodselect.value)
+                    console.log(foodinfo)
+                    const request = new XMLHttpRequest()
+                    request.open('POST', `result/${JSON.stringify(foodinfo)}`)
+                    request.send();
+                }
+            </script>
+
             </br>
             <h3>Basic Info:</h3>
             <p>The trip is from {{Origin}} to {{Destination}}</p>
@@ -149,8 +136,9 @@
             <p>cheapest_restaurant_name: {{cheapest_restaurant_name}}</p>
             <p>lowest_restaurant_price: {{lowest_restaurant_price}}</p>
             </br>
-            <p>grover_result: {{grover_result}}</p>
->>>>>>> 90d2e72 (modified many files)
+            <p>grover_flight: {{grover_flight}}</p>
+            <p>grover_hotel: {{grover_hotel}}</p>
+            <p>grover_food: {{grover_food}}</p>
         </div>
     </body>
 </html>

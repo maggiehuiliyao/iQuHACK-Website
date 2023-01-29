@@ -6,14 +6,14 @@ import random
 # sys.path.append(rootpath)
 
 from utils.Check_flights import check_flights
-<<<<<<< HEAD
+
 #from covalent_grover_sampler import grover_function #CHANGE BACK LATER
-=======
+
 from utils.Check_region_id import check_region_id
 from utils.Check_hotel import check_hotel
 from utils.Check_restaurant import check_restaurant
 from covalent_grover_sampler import grover_function
->>>>>>> 90d2e72 (modified many files)
+import json
 from flask import Flask, render_template, request
 
 app = Flask(__name__) # Creating our Flask Instance
@@ -30,6 +30,9 @@ def taskbar():
 
 @app.route('/result/', methods=['POST'])
 def result():
+    flightinfo = json.loads(flightinfo)
+    hotelinfo = json.loads(hotelinfo)
+    foodinfo = json.loads(foodinfo)
     Origin = request.form['Origin']  
     Destination = request.form['Destination']
     Departure_date = request.form['Departure_date']
@@ -39,13 +42,7 @@ def result():
     Food_type = request.form['Food_type']
     Price_range = request.form['Price_range']
 
-<<<<<<< HEAD
-    df = check_flights(Origin,Destination,Departure_date,Return_date)
-    #print(df.head())
-    df_lowest_price = list(df.flight_price_total)[0]
-    #df_html = df.to_html()
-    #df_lowest_price = df.to_html()
-=======
+
     df_flights = check_flights(Origin,Destination,Departure_date,Return_date)
     lowest_flight_price = list(df_flights.flight_price_total)[0]
     cheapest_flight_id_departing = list(df_flights.id_departing)[0]
@@ -62,7 +59,6 @@ def result():
     df_restaurant = check_restaurant(Destination)
     lowest_restaurant_price = list(df_restaurant.price_range)[0]
     cheapest_restaurant_name = list(df_restaurant.name)[0]
->>>>>>> 90d2e72 (modified many files)
 
     return render_template(
             'taskbar.html',
@@ -74,11 +70,7 @@ def result():
             Airlines=Airlines,
             Food_type=Food_type,
             Price_range=Price_range,
-<<<<<<< HEAD
-            df_lowest_price=df_lowest_price,
-            grover_result="hi"
-            #grover_result=grover_function("1100")
-=======
+
             lowest_flight_price=lowest_flight_price,
             cheapest_flight_id_departing=cheapest_flight_id_departing,
             cheapest_flight_id_returning=cheapest_flight_id_returning,
@@ -86,8 +78,9 @@ def result():
             cheapest_hotel_name=cheapest_hotel_name,
             lowest_restaurant_price=lowest_restaurant_price,
             cheapest_restaurant_name=cheapest_restaurant_name,
-            grover_result=grover_function("1100")
->>>>>>> 90d2e72 (modified many files)
+            grover_flight=grover_function(flightinfo),
+            grover_hotel=grover_function(hotelinfo),
+            grover_food=grover_function(foodinfo)
         )
     
 

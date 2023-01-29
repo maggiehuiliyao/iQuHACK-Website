@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="taskbar.css">
   </head>
   <body>
-    <h1 class="header">welcome to your newest travel planner</h1>
+    <h1 class="header">Quantum Travelling</h1>
+    <p>Welcome to your newest travel planner</p>
     <div>
       <div class="inner">
         <!-- <input type="text" id="from" name="from" class="input" placeholder="  Departure Destination"> -->
-        <label for="start location">start location:</label>
+        <label for="start location">Start Location:</label>
         <select id="cities1" class="input">
           <option>San Diego, CA</option>
           <option>New York City, NY</option>
@@ -18,12 +19,18 @@
       </div>
       <div class="inner">
         <!-- <input type="text" id="from" name="from" class="input" placeholder="  Arrival Destination"> -->
-        <label for="destination">destination:</label>
+        <label for="destination">Destination:</label>
         <select id="cities2" class="input">
           <option>Boston, MA</option>
         </select>
       </div>
-      <div class="inner"></div>
+      <div class="inner">
+        <!--the budget-->
+        <label for="budget">Budget:</label>
+          <input type="number" id="budget" name="budget" min="0" step="50">
+          <button type="button"><span></span>Let's Go</button>
+      </div>
+      <!--<div class="inner"></div>
         <label for="hotel rating">hotel rating:</label>
         <select id="numbers">
           <option>0</option>
@@ -37,7 +44,7 @@
           <option>8</option>
           <option>9</option>
           <option>10</option>
-        </select>
+        </select>-->
       </div>
     </div>
   </body>

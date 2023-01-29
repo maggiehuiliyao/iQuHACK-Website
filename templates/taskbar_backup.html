@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Quantum Travelling</title>
-    <link rel="stylesheet" href="taskbar.css">
+    <title>Quantum Traveling</title>
+    <link rel="stylesheet" href="static/taskbar.css">
   </head>
   <body>
-    <h1 class="header">welcome to your newest travel planner</h1>
+    <h1 class="header">Welcome to your newest travel planner</h1>
+    <h2 class="header">Please choose the origin and destination:</h2>
     <div>
       <div class="inner">
         <!-- <input type="text" id="from" name="from" class="input" placeholder="  Departure Destination"> -->
-        <label for="start location">start location:</label>
+        <label for="Origin">Origin:</label>
         <select id="cities1" class="input">
           <option>San Diego, CA</option>
           <option>New York City, NY</option>
-          <option>Houston, Texas</option>
+          <option>Houston, TX</option>
+          <option>Chicago, IL</option>
+          <option>Seattle, WA</option>
         </select>
       </div>
       <div class="inner">
         <!-- <input type="text" id="from" name="from" class="input" placeholder="  Arrival Destination"> -->
-        <label for="destination">destination:</label>
+        <label for="Destination">Destination:</label>
         <select id="cities2" class="input">
           <option>Boston, MA</option>
         </select>
       </div>
-      <div class="inner"></div>
-        <label for="hotel rating">hotel rating:</label>
+      <h2 class="header">Please choose your travel preference:</h2>
+      <div class="inner">
+        <label for="Hotel Rating">Hotel rating:</label>
         <select id="numbers">
           <option>0</option>
           <option>1</option>
@@ -39,9 +43,25 @@
           <option>10</option>
         </select>
       </div>
+      <div class="inner">
+        <label for="Travel Time">Travel time:</label>
+        <select id="numbers">
+          <option>Morning</option>
+          <option>Afternoon</option>
+          <option>Evening</option>
+        </select>
+      </div>
+      <div class="inner">
+        <label for="Airlines">Airlines:</label>
+        <select id="numbers">
+          <option>American</option>
+          <option>Delta</option>
+          <option>United</option>
+        </select>
+      </div>
     </div>
   </body>
-
+</html>
 
 
 
@@ -67,7 +87,6 @@
       </section>
     </main>
   </body> -->
-</html>
 
 <!--<!DOCTYPE html>
 <html lang="en">

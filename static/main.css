@@ -30,16 +30,3 @@ body {
   color:white;
   font-size: 50px;
 }
-
-.button:hover {
-  background-color: white;
-  color:black;
-}
-
-button:hover span {
-  display: none
-}
-
-.button:hover::after {
-  content: "|1⟩"
- }

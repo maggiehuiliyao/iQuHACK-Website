@@ -1,14 +1,12 @@
 import random
 
-# import os
-# import sys
-# rootpath = os.path.join(os.getcwd())
-# sys.path.append(rootpath)
+import sys,os
+sys.path.append(os.getcwd())
 
-from utils.Check_flights import check_flights
-from utils.Check_region_id import check_region_id
-from utils.Check_hotel import check_hotel
-from utils.Check_restaurant import check_restaurant
+from Check_flights import check_flights
+from Check_region_id import check_region_id
+from Check_hotel import check_hotel
+from Check_restaurant import check_restaurant
 from covalent_grover_sampler import grover_function
 from flask import Flask, render_template, request
 

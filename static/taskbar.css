@@ -24,6 +24,19 @@ body{
     height: 35px;
 }
 
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+
 /* #outer
 {
     width:100%;

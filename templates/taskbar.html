@@ -27,49 +27,79 @@
                 <br/>
                 
                 <h2 class="header">Please choose your travel preference:</h2>
+                <script>
+                    var flight_bitstring = "";
+                    var hotel_bitstring = "";
+                    var food_bitstring = "";
+                </script>
 
-                <label for="Travel_time">Travel time</label>
+                <label for="hotel_rating">Hotel Rating</label>
+                <select id="hotel_rating" name="hotel_rating">
+                    <option value="00">3</option>
+                    <option value="01">4</option>
+                    <option value="10">5</option>
+                </select>
+
+                <label for="Travel_time">Airline Departure Time</label>
                 <select id="Travel_time" name="Travel_time">
-                    <option value="Morning">Morning</option>
-                    <option value="Afternoon">Afternoon</option>
-                    <option value="Evening">Evening</option>
+                    <option value="00">Morning</option>
+                    <option value="01">Afternoon</option>
+                    <option value="11">Evening</option>
                 </select>
 
                 <label for="Airlines">Airlines</label>
                 <select id="Airlines" name="Airlines">
-                    <option value="American">American</option>
-                    <option value="Delta">Delta</option>
-                    <option value="United">United</option>
+                    <option value="00">American</option>
+                    <option value="01">Delta</option>
+                    <option value="10">United</option>
+                    <option value="11"> Southwest</option>
                 </select>
 
                 <label for="Food_type">Food_type</label>
                 <select id="Food_type" name="Food_type">
-                    <option value="American">American</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Indian">Indian</option>
+                    <option value="00">American</option>
+                    <option value="01">Chinese</option>
+                    <option value="10">Indian</option>
+                    <option value="11">Mexican</option>
                 </select>
 
                 <label for="Price_range">Price_range</label>
                 <select id="Price_range" name="Price_range">
-                    <option value="$">$</option>
-                    <option value="$$">$$</option>
-                    <option value="$$$">$$$</option>
+                    <option value="00">$</option>
+                    <option value="01">$$</option>
+                    <option value="10">$$$</option>
                 </select>
 
                 <br/>
                 <input type="submit" value="Submit"/>
             </form>
+            <div class="flex-container">
 
-            <p>The trip is from {{Origin}} to {{Destination}}</p>
-            <p>Departure date: {{Departure_date}}. Return date: {{Return_date}}</p>
-            <p>Transportation preference:</p>
-            <p>Airlines: {{Airlines}}</p>
-            <p>Travel time: {{Travel_time}}</p>
-            <p>Food preference:</p>
-            <p>Type: {{Food_type}}</p>
-            <p>Price range: {{Price_range}}</p>
-            <p>lowest_ticket_price: {{df_lowest_price}}</p>
-            <p>grover_result: {{grover_result}}</p>
+                <div class="flex-child">
+                    <p>The trip is from {{Origin}} to {{Destination}}</p>
+                    <p>Departure date: {{Departure_date}}. Return date: {{Return_date}}</p>
+                    <p>Transportation preference:</p>
+                    <p>Airlines: {{Airlines}}</p>
+                    <p>Travel time: {{Travel_time}}</p>
+                    <p>Food preference:</p>
+                    <p>Type: {{Food_type}}</p>
+                    <p>Price range: {{Price_range}}</p>
+                    <p>lowest_ticket_price: {{df_lowest_price}}</p>
+                    <p>grover_result: {{grover_result}}</p>
+                </div>
+                
+                <div class="flex-child">
+                  <!-- listing something -->
+                  <script>
+                    var timeselect = document.getElementById("Travel_time")
+                    var airlineselect = document.getElementById("Airlines")
+                    flight_bitstring+=(timeselect.value + airlineselect.value)
+                    console.log(flight_bitstring)
+                  </script>
+                  
+                </div>
+                
+              </div>
         </div>
     </body>
 </html>

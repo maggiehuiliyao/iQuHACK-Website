@@ -6,7 +6,7 @@ import random
 # sys.path.append(rootpath)
 
 from utils.Check_flights import check_flights
-from covalent_grover_sampler import grover_function
+#from covalent_grover_sampler import grover_function #CHANGE BACK LATER
 from flask import Flask, render_template, request
 
 app = Flask(__name__) # Creating our Flask Instance
@@ -33,7 +33,10 @@ def result():
     Price_range = request.form['Price_range']
 
     df = check_flights(Origin,Destination,Departure_date,Return_date)
+    #print(df.head())
     df_lowest_price = list(df.flight_price_total)[0]
+    #df_html = df.to_html()
+    #df_lowest_price = df.to_html()
 
     return render_template(
             'taskbar.html',
@@ -46,7 +49,8 @@ def result():
             Food_type=Food_type,
             Price_range=Price_range,
             df_lowest_price=df_lowest_price,
-            grover_result=grover_function("1100")
+            grover_result="hi"
+            #grover_result=grover_function("1100")
         )
     
 
